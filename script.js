@@ -32,8 +32,8 @@ count number of rounds won or lost
 
 let playerWin = 0; 
 let computerWin = 0;
-let playerChoice;
-let computerChoice;
+let playerChoice = "";
+let computerChoice = "";
 
 function playRound(playerChoice, computerChoice) { 
     playerChoice = playerChoice.toUpperCase(); 
@@ -45,13 +45,13 @@ function playRound(playerChoice, computerChoice) {
     } else if ((playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
               (playerChoice == "PAPER" && computerChoice == "ROCK") ||
               (playerChoice == "SCISSORS" && computerChoice == "PAPER")) {
+      playerwin++;
       return "You WIN!";
-      playerWin++;
     } else if ((playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
               (playerChoice == "ROCK" && computerChoice == "PAPER") ||
               (playerChoice == "PAPER" && computerChoice == "SCISSORS")) {
-      return "You LOSE!";
       computerWin++;
+      return "You LOSE!";
     } else {
       return "ERROR: You must choose ROCK, PAPER, or SCISSORS."; 
     }
@@ -66,6 +66,15 @@ function game() {
   playRound(playerChoice, computerChoice);
   console.log(`Player wins: ${ playerWin }`);
   console.log(`Computer wins: ${ computerWin }`);
+  if (playerWin == 5) {
+    return `You won the game! Take that, Computer!`;
+  } else if (computerWin == 5) {
+    return `Computer won the game! Sucks to be you, I guess.`;
+  } else if ((playerWin < 5) && (computerWin < 5)) {
+    return `Keep playing to win best of 5!`;
+  } else if ((playerWin > 5) || (computerWin > 5)) {
+    return `Stop, he's already dead!`;
+  }
 };
 
 
