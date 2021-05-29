@@ -35,52 +35,67 @@ let computerWin = 0;
 let playerChoice;
 let computerChoice;
 let roundResult;
+let invalidChoice = "Invalid choice!";
+
 
 function playRound(playerChoice, computerChoice) { 
-    playerChoice = playerChoice.toUpperCase(); 
-    computerChoice = computerPlay(); 
-    console.log(`You played ${ playerChoice }!`); 
-    console.log(`Computer played ${ computerChoice }!`);
-    if (playerChoice == computerChoice) { 
-      roundResult = "It's a tie!";
-      return roundResult;
-    } else if (
-              (playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
-              (playerChoice == "PAPER" && computerChoice == "ROCK") ||
-              (playerChoice == "SCISSORS" && computerChoice == "PAPER")
-              ) {
+  playerChoice = playerChoice.toUpperCase(); 
+  computerChoice = computerPlay(); 
+  console.log(`You played ${ playerChoice }!`); 
+  console.log(`Computer played ${ computerChoice }!`);
 
-      playerWin++;
-      roundResult = "You WON!";
-      return roundResult;
+  if (
+     (playerChoice !== "ROCK") &&
+     (playerChoice !== "PAPER") &&
+     (playerChoice !== "SCISSORS")
+     ) {
+    alert("Invalid Choice!");
+    roundResult = invalidChoice;
+    return invalidChoice;
 
-    } else if (
-              (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
-              (playerChoice == "ROCK" && computerChoice == "PAPER") ||
-              (playerChoice == "PAPER" && computerChoice == "SCISSORS")
-              ) {
-      computerWin++;
-      roundResult = "You LOST!";
-      return roundResult;
-    } else {
-      roundResult = "Invalid player choice";
-      return roundResult;
-    }
+  } else if (
+            (playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
+            (playerChoice == "PAPER" && computerChoice == "ROCK") ||
+            (playerChoice == "SCISSORS" && computerChoice == "PAPER")
+            ) {
+    playerWin++;
+    roundResult = "You WON!";
+    return roundResult;
+
+  } else if (
+            (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
+            (playerChoice == "ROCK" && computerChoice == "PAPER") ||
+            (playerChoice == "PAPER" && computerChoice == "SCISSORS")
+            ) {
+    computerWin++;
+    roundResult = "You LOST!";
+    return roundResult;
+
+  } else {
+    roundResult = "It's a tie!";
+    return roundResult;
+  }
 };
 
 // check number of player or computer wins and return score 
 // if either is over 5 alert user to start again
 
 function checkScore(playerWin, computerWin) {
-  if (playerWin === 5) {
-    return alert(`You won the game! Take that, Computer!`);
-  } else if (computerWin === 5) {
-    return alert(`Computer won the game! The machines are taking over!`);
-  } else if ((playerWin < 5) && (computerWin < 5)) {
-    return `Keep playing to win best of 5!`;
+  if (roundResult === invalidChoice) {
+    return "Invalid choice, try again";
+
   } else if ((playerWin > 5) || (computerWin > 5)) {
     let refreshAlert = alert("Stop, he's already dead! Refresh to play again.");
     return refreshAlert;
+
+  } else if (playerWin === 5) {
+    return alert(`You won the game! Take that, Computer!`);
+
+  } else if (computerWin === 5) {
+    return alert(`Computer won the game! The machines are taking over!`);
+
+  } else {
+    return `Keep playing, first to 5 wins!`;
   }
 };
 
@@ -88,17 +103,7 @@ function checkScore(playerWin, computerWin) {
 
 function chooseFighter() {
   playerChoice = prompt("Choose your fighter! Rock, paper, or scissors?");
-};
-
-/* 
-count number of player and computer wins
-if neither has reached 5 play another round
-if either has reached 5:
-  notify user of winner
-  prompt user to refresh the page
-*/
-
-// game function - choose fighter, play round, check score
+}
 
 
 // game function - choose fighter, play round, check score
@@ -112,4 +117,5 @@ function game() {
   let score = checkScore(playerWin, computerWin);
   return score;
 };
+
 
