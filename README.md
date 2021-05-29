@@ -3,4 +3,4 @@
 This is my first attempt at building a game in JavaScript, built for The Odin Project. 
 This is practice for problem solving - breaking down a larger project into smaller chunks to work on, one at a time. It's also practice for working with JavaScript of course, and with using git and github. <br>
 <br>
-You can play <a href="https://mchlol.github.io/rockpaperscissors/">here</a>. Open the console, and call playRound("rock"); to get started.
+You can play <a href="https://mchlol.github.io/rockpaperscissors/">here</a>. Open the console, and call game(); to get started!
