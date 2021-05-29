@@ -49,9 +49,11 @@ function playRound(playerChoice, computerChoice) {
               (playerChoice == "PAPER" && computerChoice == "ROCK") ||
               (playerChoice == "SCISSORS" && computerChoice == "PAPER")
               ) {
+
       playerWin++;
       roundResult = "You WON!";
       return roundResult;
+
     } else if (
               (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
               (playerChoice == "ROCK" && computerChoice == "PAPER") ||
@@ -86,7 +88,17 @@ function checkScore(playerWin, computerWin) {
 
 function chooseFighter() {
   playerChoice = prompt("Choose your fighter! Rock, paper, or scissors?");
-}
+};
+
+/* 
+count number of player and computer wins
+if neither has reached 5 play another round
+if either has reached 5:
+  notify user of winner
+  prompt user to refresh the page
+*/
+
+// game function - choose fighter, play round, check score
 
 
 // game function - choose fighter, play round, check score
@@ -100,5 +112,4 @@ function game() {
   let score = checkScore(playerWin, computerWin);
   return score;
 };
-
 
