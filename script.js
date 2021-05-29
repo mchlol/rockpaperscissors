@@ -49,9 +49,11 @@ function playRound(playerChoice, computerChoice) {
               (playerChoice == "PAPER" && computerChoice == "ROCK") ||
               (playerChoice == "SCISSORS" && computerChoice == "PAPER")
               ) {
-    playerWin++;  
-    roundResult = "You WON!";
-    return roundResult;
+
+      playerWin++;
+      roundResult = "You WON!";
+      return roundResult;
+
     } else if (
               (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
               (playerChoice == "ROCK" && computerChoice == "PAPER") ||
@@ -61,7 +63,7 @@ function playRound(playerChoice, computerChoice) {
       roundResult = "You LOST!";
       return roundResult;
     } else {
-      roundResult = "ERROR: You must choose ROCK, PAPER, or SCISSORS."; 
+      roundResult = "Invalid player choice";
       return roundResult;
     }
 };
@@ -73,7 +75,7 @@ function checkScore(playerWin, computerWin) {
   if (playerWin === 5) {
     return alert(`You won the game! Take that, Computer!`);
   } else if (computerWin === 5) {
-    return alert(`Computer won the game! Sucks to be you, I guess.`);
+    return alert(`Computer won the game! The machines are taking over!`);
   } else if ((playerWin < 5) && (computerWin < 5)) {
     return `Keep playing to win best of 5!`;
   } else if ((playerWin > 5) || (computerWin > 5)) {
@@ -98,12 +100,15 @@ if either has reached 5:
 
 // game function - choose fighter, play round, check score
 
+
+// game function - choose fighter, play round, check score
+
 function game() {
-  chooseFighter(); // call function to get player input
+  chooseFighter(); // call function to get player choice
   playRound(playerChoice, computerChoice);
   console.log(roundResult);
-  console.log(`Player wins: ${ playerWin }`);
-  console.log(`Computer wins: ${ computerWin }`);
+  console.log(`Player wins: ${ playerWin }\n
+  Computer wins: ${ computerWin }`);
   let score = checkScore(playerWin, computerWin);
   return score;
 };
