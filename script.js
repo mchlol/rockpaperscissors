@@ -88,6 +88,13 @@ function chooseFighter() {
   playerChoice = prompt("Choose your fighter! Rock, paper, or scissors?");
 };
 
+/* 
+count number of player and computer wins
+if neither has reached 5 play another round
+if either has reached 5:
+  notify user of winner
+  prompt user to refresh the page
+*/
 
 // game function - choose fighter, play round, check score
 
@@ -101,11 +108,3 @@ function game() {
   return score;
 };
 
-
-/* 
-count number of player and computer wins
-if neither has reached 5 play another round
-if either has reached 5:
-  notify user of winner
-  prompt user to refresh the page
-*/
