@@ -27,13 +27,14 @@ check if player choice is winner or loser or tie
   if player == rock && computer == paper return lose
   if player == scissors && computer == paper return win
   if player == paper & computer == scissors return lose
-count number of rounds won or lost
+count number of player wins and computer wins
 */
 
 let playerWin = 0; 
 let computerWin = 0;
-let playerChoice = "";
-let computerChoice = "";
+let playerChoice;
+let computerChoice;
+let roundResult;
 
 function playRound(playerChoice, computerChoice) { 
     playerChoice = playerChoice.toUpperCase(); 
@@ -41,53 +42,70 @@ function playRound(playerChoice, computerChoice) {
     console.log(`You played ${ playerChoice }!`); 
     console.log(`Computer played ${ computerChoice }!`);
     if (playerChoice == computerChoice) { 
-      return "It's a tie!";
-    } else if ((playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
+      roundResult = "It's a tie!";
+      return roundResult;
+    } else if (
+              (playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
               (playerChoice == "PAPER" && computerChoice == "ROCK") ||
-              (playerChoice == "SCISSORS" && computerChoice == "PAPER")) {
+              (playerChoice == "SCISSORS" && computerChoice == "PAPER")
+              ) {
       playerwin++;
-      return "You WIN!";
-    } else if ((playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
+      roundResult = "You WON!";
+      return roundResult;
+    } else if (
+              (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
               (playerChoice == "ROCK" && computerChoice == "PAPER") ||
-              (playerChoice == "PAPER" && computerChoice == "SCISSORS")) {
+              (playerChoice == "PAPER" && computerChoice == "SCISSORS")
+              ) {
       computerWin++;
-      return "You LOSE!";
+      roundResult = "You LOST!";
+      return roundResult;
     } else {
-      return "ERROR: You must choose ROCK, PAPER, or SCISSORS."; 
+      roundResult = "Invalid player choice";
+      return roundResult;
     }
 };
+
+// check number of player or computer wins and return score 
+// if either is over 5 alert user to start again
+
+function checkScore(playerWin, computerWin) {
+  if (playerWin === 5) {
+    return alert(`You won the game! Take that, Computer!`);
+  } else if (computerWin === 5) {
+    return alert(`Computer won the game! Sucks to be you, I guess.`);
+  } else if ((playerWin < 5) && (computerWin < 5)) {
+    return `Keep playing to win best of 5!`;
+  } else if ((playerWin > 5) || (computerWin > 5)) {
+    let refreshAlert = alert("Stop, he's already dead! Refresh to play again.");
+    return refreshAlert;
+  }
+};
+
+// prompt user to pick rock paper or scissors & store result in playerChoice variable
 
 function chooseFighter() {
   playerChoice = prompt("Choose your fighter! Rock, paper, or scissors?");
 }
 
+/* 
+count number of player and computer wins
+if neither has reached 5 play another round
+if either has reached 5:
+  notify user of winner
+  prompt user to refresh the page
+*/
+
+// game function - choose fighter, play round, check score
+
 function game() {
-  chooseFighter();
+  chooseFighter(); // call function to get player choice
   playRound(playerChoice, computerChoice);
+  console.log(roundResult);
   console.log(`Player wins: ${ playerWin }`);
   console.log(`Computer wins: ${ computerWin }`);
-  if (playerWin == 5) {
-    return `You won the game! Take that, Computer!`;
-  } else if (computerWin == 5) {
-    return `Computer won the game! Sucks to be you, I guess.`;
-  } else if ((playerWin < 5) && (computerWin < 5)) {
-    return `Keep playing to win best of 5!`;
-  } else if ((playerWin > 5) || (computerWin > 5)) {
-    return `Stop, he's already dead!`;
-  }
+  let score = checkScore(playerWin, computerWin);
+  return score;
 };
 
 
-
-/* 
-record if round is win or lose
-  create counter variable
-  increment by one for each player win
-  increment by one for each computer win
-play again x 4 rounds
-after 5 rounds return if more than 3 wins or more than 3 loses
-return if win or lose game
-  if rounds won greater than 3 return game won
-  if rounds lost great than 3 return game lost
-reset counter
-*/
