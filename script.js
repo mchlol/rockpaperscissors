@@ -35,6 +35,7 @@ let computerWin = 0;
 let playerChoice;
 let computerChoice;
 let roundResult;
+let scoreAlert;
 let invalidChoice = "Invalid choice!";
 
 
@@ -82,20 +83,27 @@ function playRound(playerChoice, computerChoice) {
 
 function checkScore(playerWin, computerWin) {
   if (roundResult === invalidChoice) {
-    return "Invalid choice, try again";
+    scoreAlert = "Invalid choice, try again";
+    return scoreAlert;
 
   } else if ((playerWin > 5) || (computerWin > 5)) {
     let refreshAlert = alert("Stop, he's already dead! Refresh to play again.");
     return refreshAlert;
 
   } else if (playerWin === 5) {
-    return alert(`You won the game! Take that, Computer!`);
+    scoreAlert = alert(`You won the game! Take that, Computer!`);
+    return scoreAlert;
 
   } else if (computerWin === 5) {
-    return alert(`Computer won the game! The machines are taking over!`);
+    scoreAlart =  alert(`Computer won the game! The machines are taking over!`);
+    return scoreAlert;
 
+  } else if ((playerWin < 5) || (computerWin < 5)) {
+    scoreAlert = alert(`Keep playing, first to 5 wins!`);
+    return scoreAlert;
   } else {
-    return `Keep playing, first to 5 wins!`;
+    scoreAlert = alert("Game over! Refresh to play again.");
+    return scoreAlert;
   }
 };
 
@@ -108,14 +116,37 @@ function chooseFighter() {
 
 // game function - choose fighter, play round, check score
 
+/* commenting out game function to add reset once won
+
 function game() {
   chooseFighter(); // call function to get player choice
   playRound(playerChoice, computerChoice);
   console.log(roundResult);
-  console.log(`Player wins: ${ playerWin }\n
-  Computer wins: ${ computerWin }`);
+  console.log(` No. of player wins: ${ playerWin }\n No. of computer wins: ${ computerWin }`);
   let score = checkScore(playerWin, computerWin);
   return score;
 };
 
+*/
 
+function game() {
+  chooseFighter(); // call function to get player choice
+  playRound(playerChoice, computerChoice); // play round
+  console.log(roundResult); // show winner of round
+  console.log(` No. of player wins: ${ playerWin }\n No. of computer wins: ${ computerWin }`); // show current score in console
+  let score = checkScore(playerWin, computerWin); // show status if games remaining or alert if someone has won
+  if (
+    (playerWin === 5) ||
+    (computerWin === 5) 
+  ) {
+    return alert("Game over!");
+  } else {
+    return game();
+  }
+};
+
+
+
+// loop game to make up 5 rounds
+// prevent game from continuing after someone has won
+// reset scores
