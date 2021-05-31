@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Rock+Salt&display=swap');
+
+main {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+}
+
+h1,h2,h4 {   
+    font-family: 'Rock Salt', cursive;
+    color:coral;
+}
+
+
+.player-choice {
+    font-family: 'Rock Salt', cursive;
+    color:coral;
+}
+
+.computer-choice {
+    font-family: 'Rock Salt', cursive;
+    color:coral;
+}
+
+a {
+    color:cornflowerblue;
+    text-decoration: none;
+}
+
+a:hover {
+    color: coral;
+}
+
+section {
+    border: 1px solid black;
+    width: 80vw;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+article {
+    border: 1px solid coral;
+    width: 80vw;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+/* CHOICES SECTION */
+#choices {
+    height: auto;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: center;
+}
+
+/* INDIVIDUAL CHOICE */
+.choice {
+    font-family: 'Rock Salt', cursive;
+    font-size: 1.2em;
+    flex-grow: 1;
+    text-align: center;
+    border: 1px solid cornflowerblue;
+}

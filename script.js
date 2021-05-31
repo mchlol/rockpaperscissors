@@ -139,7 +139,8 @@ function game() {
     (playerWin === 5) ||
     (computerWin === 5) 
   ) {
-    return alert("Game over!");
+    console.log("Game Over, refresh to play again.");
+    return alert("Game over! Refresh the page to start again.");
   } else {
     return game();
   }
