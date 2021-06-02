@@ -2,11 +2,80 @@
 
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+        <link rel="stylesheet" href="rpsstyle.css">
         <title>Rock! Paper! Scissors!</title>
     </head>
-</html>
-
 <body>
 
-    <script src="script.js"></script>
+
+    <main>
+    <!-- HEADING -->
+    <heading>
+        <h1>Rock! Paper! Scissors!</h1>
+    </heading>
+
+    <!-- CHOOSE & DISPLAY CHOICES -->
+
+    <!-- CHOICES HEADING -->
+    <article id="choices-heading">
+        <h2>Choose your fighter!</h2>
+    </article>
+
+    <!-- CHOICES -->
+    <article id="choices">
+        <div id="choice-rock" class="choice">
+        <a href="#">ROCK</a>
+        </div>
+        <div id="choice-paper" class="choice">
+        <a href="#">PAPER</a>
+        </div>
+        <div id="choice-scissors" class="choice">
+        <a href="#">SCISSORS</a>
+        </div>
+    </article>
+
+    <!-- DISPLAY ROUND CHOICES  ** CHANGE TO GRID -->
+    <article id="round-choices">
+        <p id="player-choice">
+            You played ROCK!
+        </p>
+        <p id="computer-choice">
+            Computer played SCISSORS!
+        </p>
+    </article>
+
+    <!-- ROUND WINNER -->
+    <section id="message">
+        <h2 id="round-winner">
+            YOU WON!
+        </h2>
+        <p id="status">
+            First to five wins!
+        </p>
+    </section>
+
+    <a href="#"><button>RESET</button></a>
+<br>
+    <small>Built by <a href="https://github.com/mchlol">mchlol</a></small>
+    </main>
+    <script src="./Rock! Paper! Scissors!_files/script.js"></script>
+
+
+<!-- 
+    structure: 
+    heading
+      title
+    instructions
+    choices
+      rock paper scissors
+    message box 
+      invalid choice
+      round choices
+      round results
+      score / play again
+    reset button
+    copyright/disclaimer & links
+-->
 </body>
+</html>
