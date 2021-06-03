@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Rock+Salt&display=swap');
 
+body {
+    font-size: 16px;
+}
+
 main {
     font-family: 'Open Sans', sans-serif;
     display: flex;
@@ -33,7 +37,6 @@ a:hover {
 }
 
 section {
-    border: 1px solid black;
     width: 80vw;
     display: flex;
     flex-flow: column wrap;
@@ -43,7 +46,6 @@ section {
 }
 
 article {
-    border: 1px solid coral;
     width: 80vw;
     display: flex;
     flex-flow: column wrap;
@@ -64,9 +66,14 @@ article {
 
 /* INDIVIDUAL CHOICE */
 .choice {
-    font-family: 'Rock Salt', cursive;
+    font-family: 'Opens Sans', sans-serif;
     font-size: 1.2em;
+    width: 100px;
+    height: auto;
     flex-grow: 1;
+    flex-shrink: 3;
     text-align: center;
+    margin: 10px;
+    padding: 10px;
     border: 1px solid cornflowerblue;
 }
