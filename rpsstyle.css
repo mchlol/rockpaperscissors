@@ -1,29 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;1,400;1,600&family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
 
 body {
     font-size: 16px;
+    font-family: "Yomogi", cursive;
 }
 
 main {
-    font-family: 'Open Sans', sans-serif;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
 }
 
 h1,h2,h4 {   
-    font-family: 'Rock Salt', cursive;
-    color:coral;
+    color: black;
 }
 
 
 .player-choice {
-    font-family: 'Rock Salt', cursive;
-    color:coral;
+    color: cornflowerblue;
 }
 
 .computer-choice {
-    font-family: 'Rock Salt', cursive;
     color:coral;
 }
 
@@ -36,7 +33,7 @@ a:hover {
     color: coral;
 }
 
-section {
+div {
     width: 80vw;
     display: flex;
     flex-flow: column wrap;
@@ -45,17 +42,15 @@ section {
     align-content: center;
 }
 
-article {
-    width: 80vw;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+/* HEADING */
+
+heading {
+    text-align: center;
 }
+
 
 /* CHOICES SECTION */
-#choices {
+#choices-wrapper {
     height: auto;
     display: flex;
     flex-flow: row nowrap;
@@ -64,16 +59,31 @@ article {
     align-content: center;
 }
 
-/* INDIVIDUAL CHOICE */
 .choice {
-    font-family: 'Opens Sans', sans-serif;
-    font-size: 1.2em;
-    width: 100px;
+    font-size: 2em;
+    width: 250px;
     height: auto;
     flex-grow: 1;
     flex-shrink: 3;
     text-align: center;
     margin: 10px;
     padding: 10px;
-    border: 1px solid cornflowerblue;
+    border-radius: 49px;
+    background: #ffffff;
+    box-shadow:  10px 10px 33px #c9c9c9,
+             -10px -10px 33px #ffffff;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    color: black;
+    border: 1px solid silver;
+    border-radius: 25px;
+    font-family: "Yomogi";
+}
+
+#credit {
+    font-size: 0.8em;
 }

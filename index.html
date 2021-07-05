@@ -2,7 +2,6 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <link rel="stylesheet" href="rpsstyle.css">
         <title>Rock! Paper! Scissors!</title>
     </head>
@@ -13,53 +12,45 @@
     <!-- HEADING -->
     <heading>
         <h1>Rock! Paper! Scissors!</h1>
+        <h3>First to 5 wins!</h3>
     </heading>
 
     <!-- CHOOSE & DISPLAY CHOICES -->
 
     <!-- CHOICES HEADING -->
-    <article id="choices-heading">
+    <div id="choices-heading">
         <h2>Choose your fighter!</h2>
-    </article>
+    </div>
 
     <!-- CHOICES -->
-    <article id="choices">
-        <div id="choice-rock" class="choice">
-        <a href="#">ROCK</a>
-        </div>
-        <div id="choice-paper" class="choice">
-        <a href="#">PAPER</a>
-        </div>
-        <div id="choice-scissors" class="choice">
-        <a href="#">SCISSORS</a>
-        </div>
-    </article>
+    <div class="wrapper" id="choices-wrapper">
+        <div class="choice" id="rock">ROCK</div>
+        <div class="choice" id="paper">PAPER</div>
+        <div class="choice" id="scissors">SCISSORS</div>
+    </div>
 
-    <!-- DISPLAY ROUND CHOICES  ** CHANGE TO GRID -->
-    <article id="round-choices">
-        <p id="player-choice">
-            You played ROCK!
-        </p>
-        <p id="computer-choice">
-            Computer played SCISSORS!
-        </p>
-    </article>
+    <!-- DISPLAY ROUND CHOICES -->
+    <div class="wrapper" id="round-choices">
+        <div class="round-choice" id="player-choice"></div>
+        <div class="round-choice" id="computer-choice"></div>
+    </div>
 
-    <!-- ROUND WINNER -->
-    <section id="message">
-        <h2 id="round-winner">
-            YOU WON!
-        </h2>
-        <p id="status">
-            First to five wins!
-        </p>
-    </section>
+ 
+    <!-- ROUND RESULT -->
+    <div id="round-result">
+    </div>
 
-    <a href="#"><button>RESET</button></a>
+
+    <br><br><br>
+    <button id="reset">RESET</button>
 <br>
-    <small>Built by <a href="https://github.com/mchlol">mchlol</a></small>
+    
+    <div id="credit">
+    Built by <a href="https://github.com/mchlol">mchlol</a>
+    </div>
     </main>
     <script src="script.js"></script>
+    <script src="gui_script.js"></script>
 
 
 <!-- 
