@@ -11,16 +11,9 @@
     <main>
     <!-- HEADING -->
     <heading>
-        <h1>Rock! Paper! Scissors!</h1>
-        <h3>First to 5 wins</h3>
+        <h1>CHOOSE YOUR FIGHTER!</h1>
     </heading>
 
-    <!-- CHOOSE & DISPLAY CHOICES -->
-
-    <!-- CHOICES HEADING -->
-    <div id="choices-heading">
-        <h2>Choose your fighter!</h2>
-    </div>
 
     <!-- CHOICES -->
     <div class="wrapper" id="choices-wrapper">
@@ -29,9 +22,11 @@
         <button class="choice" id="scissors">SCISSORS</button>
     </div>
 
-    <!-- NUMBER OF ROUNDS PLAYER -->
-    <div class="wrapper" id="round-number">
-    
+    <!-- NUMBER OF ROUNDS PLAYED -->
+    <div class="wrapper">
+    First to 5 wins!<br>
+        ROUNDS PLAYED: 
+        <div id="round-number"></div>
     </div>
 
     <!-- DISPLAY ROUND CHOICES -->
@@ -45,13 +40,27 @@
     <div id="round-result">
     </div>
 
+    <!-- CURRENT SCORE -->
+    <div class="wrapper" id="score-wrapper">
+        <br>
+        <div>PLAYER WINS:</div>
+        <div id="show-player-score"></div>
+        <div>COMPUTER WINS:</div>
+        <div id="show-computer-score"></div>
+    </div>
 
-    <br><br><br>
+    <!-- status -->
+    <div class="wrapper">
+        <div id="score-status">[Play again!]</div>
+    </div>
+
+
+    <br><br>
     <button id="reset" onClick="window.location.reload();">RESET</button>
 <br>
     
     <div id="credit">
-    Built by <a href="https://github.com/mchlol">mchlol</a>
+    Made by <a href="https://github.com/mchlol">mchlol</a>
     </div>
     </main>
     
@@ -61,15 +70,13 @@
 <!-- 
     structure: 
     heading
-      title
-    instructions
     choices
       rock paper scissors
     message box 
-      invalid choice
       round choices
-      round results
-      score / play again
+      round result
+      rounds played
+      player score & computer score
     reset button
     copyright/disclaimer & links
 -->

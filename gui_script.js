@@ -1,18 +1,29 @@
 
-// display 
+// choices
 
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 
+// player choice
+/* click button needs to start game, with player choice set, not just round */
+
+rockBtn.onclick = () => playRound("ROCK");
+paperBtn.onclick = () => playRound("PAPER");
+scissorsBtn.onclick = () => playRound("SCISSORS");
+
+// set div variables
+
 const playerChoiceDiv = document.querySelector("#player-choice");
 const computerChoiceDiv = document.querySelector("#computer-choice");
-
+const roundResultDiv = document.querySelector("#round-result");
 const roundNumberDiv = document.querySelector("#round-number");
 
-const roundResultDiv = document.querySelector("#round-result");
+const playerScore = document.querySelector("show-player-score");
+const ComputerScore = document.querySelector("#show-player-score");
+const scoreStatus = document.querySelector("#score-status");
 
-// computer choice
+// set computer choice
 
 function computerPlay() {
   let computerTurnOptions = ["ROCK", "PAPER", "SCISSORS"]; 
@@ -34,13 +45,8 @@ let scoreAlert;
 let roundNumber = 0;
 let invalidChoice = "Invalid choice!";
 
-// player choice
 
-rockBtn.onclick = () => playRound("ROCK");
-paperBtn.onclick = () => playRound("PAPER");
-scissorsBtn.onclick = () => playRound("SCISSORS");
-
-// round 
+// plays round 
 
 function playRound(playerChoice, computerChoice) { 
 computerChoice = computerPlay(); 
@@ -81,8 +87,6 @@ if (
     roundResultDiv.textContent = roundResult;
   return roundResult;
 }
-roundNumber++;
-roundNumberDiv.textContent = `ROUND roundNumber`;
 };
 
 // check score
@@ -90,25 +94,31 @@ roundNumberDiv.textContent = `ROUND roundNumber`;
 function checkScore(playerWin, computerWin) {
 if (roundResult === invalidChoice) {
   scoreAlert = "Invalid choice, try again";
+  scoreStatus.textContent = scoreAlert;
   return scoreAlert;
 
 } else if ((playerWin > 5) || (computerWin > 5)) {
-  let refreshAlert = alert("Stop, he's already dead! Refresh to play again.");
+  let refreshAlert = `Stop, he's already dead! Refresh to play again.`;
+  scoreStatus.textContent = scoreAlert;
   return refreshAlert;
 
 } else if (playerWin === 5) {
-  scoreAlert = alert(`You won the game! Take that, Computer!`);
+  scoreAlert = `You won the game! Take that, Computer!`;
+  scoreStatus.textContent = scoreAlert;
   return scoreAlert;
 
 } else if (computerWin === 5) {
-  scoreAlart =  alert(`Computer won the game! The machines are taking over!`);
+  scoreAlart =  `Computer won the game! The machines are taking over!`;
+  scoreStatus.textContent = scoreAlert;
   return scoreAlert;
 
 } else if ((playerWin < 5) || (computerWin < 5)) {
-  scoreAlert = alert(`Keep playing, first to 5 wins!`);
+  scoreAlert = "Keep playing, first to 5 wins!";
   return scoreAlert;
+  scoreStatus.textContent = scoreAlert;
 } else {
-  scoreAlert = alert("Game over! Refresh to play again.");
+  scoreAlert = "Game over! Refresh to play again.";
+  scoreStatus.textContent = scoreAlert;
   return scoreAlert;
 }
 };
@@ -117,7 +127,13 @@ if (roundResult === invalidChoice) {
 
 function game() {
 playRound(playerChoice, computerChoice); // play round
-console.log(roundResult); // show winner of round
+// show winner of round:
+roundResultDiv.textContent = roundResult;
+console.log(roundResult); 
+
+// show current score:
+
+
 console.log(` No. of player wins: ${ playerWin }\n No. of computer wins: ${ computerWin }`); // show current score in console
 let score = checkScore(playerWin, computerWin); // show status if games remaining or alert if someone has won
 if (
@@ -127,6 +143,8 @@ if (
   console.log("Game Over, refresh to play again.");
   return alert("Game over! Refresh the page to start again.");
 } else {
+    roundNumber++;
+    roundNumberDiv.textContent = `ROUND ${roundNumber}`;
   return game();
 }
 };
