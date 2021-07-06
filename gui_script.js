@@ -1,68 +1,88 @@
-// buttons
-/*
-const buttons = document.querySelectorAll('button');
 
-buttons.forEach((button) => {
-    button.addEventListener('click', () => {
-        alert(button.id);
-    });
-});
-*/
+// display variables
 
-const rock = document.querySelector("rock");
-const paper = document.querySelector("paper");
-const scissors = document.querySelector("scissors");
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
 
-const playerChoice = document.querySelector("player-choice");
-const computerChoice = document.querySelector("computer-choice");
+const playerChoiceDiv = document.querySelector("#player-choice");
+const computerChoiceDiv = document.querySelector("#computer-choice");
 
-const roundResult = document.querySelector("round-result");
+const roundResultDiv = document.querySelector("#round-result");
 
-const reset = document.querySelector("reset");
+// computer choice
 
-//reset button onclick window.location.reload();
+function computerPlay() {
+  let computerTurnOptions = ["ROCK", "PAPER", "SCISSORS"]; 
+  function getRandom(min, max) {
+      return Math.random() * (max - min) + min;
+  } 
+  let randomNumber = Math.floor(getRandom(3,0)); 
+  return computerTurnOptions[randomNumber]; 
+}
 
-reset.addEventListener('click', () => {
-    window.location.reload();
-});
+// script variables
 
+let playerWin = 0; 
+let computerWin = 0;
+let playerChoice;
+let computerChoice;
+let roundResult;
+let scoreAlert;
+let invalidChoice = "Invalid choice!";
 
-// DIV 
+// player choice
 
-/*
-const container = document.querySelector('#container');
-
-const content = document.createElement('div');
-content.classList.add('content');
-content.textContent = 'This is the glorious text-content!';
-
-container.appendChild(content);
-
-const redParagraph = document.createElement('p');
-redParagraph.style.cssText = "color: red";
-redParagraph.textContent = "Hey I'm red!";
-
-container.appendChild(redParagraph);
-
-const blueHeader3 = document.createElement('h3');
-blueHeader3.style.cssText = "color: blue";
-blueHeader3.textContent = "I'm a blue h3!";
-
-container.appendChild(blueHeader3);
-
-const newDiv = document.createElement("div");
-newDiv.style.cssText = "border: 1px solid black; background-color: pink";
-
-const newHeader1 = document.createElement("h1");
-newHeader1.textContent = "I'm in a div";
-
-const newParagraph = document.createElement("p");
-newParagraph.textContent = "ME TOO!";
+rockBtn.onclick = () => playerChoice = "ROCK";
+paperBtn.onclick = () => playerChoice = "PAPER";
+scissorsBtn.onclick = () => playerChoice = "SCISSORS";
 
 
-newDiv.appendChild(newHeader1);
-newDiv.appendChild(newParagraph);
+// game function
 
-container.appendChild(newDiv);
-/*
+function playRound(playerChoice, computerChoice) { 
+//playerChoice = playerChoice.toUpperCase(); 
+computerChoice = computerPlay(); 
+playerChoiceDiv.textContent = `You played ${ playerChoice }!`;
+computerChoiceDiv.textContent = `Computer played ${ computerChoice }!`
+
+console.log(`You played ${ playerChoice }!`); // div
+console.log(`Computer played ${ computerChoice }!`); // div
+
+if (
+   (playerChoice !== "ROCK") &&
+   (playerChoice !== "PAPER") &&
+   (playerChoice !== "SCISSORS")
+   ) {
+  alert("Invalid Choice!"); // probably don't need this in the GUI
+  roundResult = invalidChoice;
+  return invalidChoice;
+
+} else if (
+          (playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
+          (playerChoice == "PAPER" && computerChoice == "ROCK") ||
+          (playerChoice == "SCISSORS" && computerChoice == "PAPER")
+          ) {
+  playerWin++;
+  roundResult = "You WON!"; // div
+    roundResultDiv.textContent = `You WON!`;
+  return roundResult;
+
+} else if (
+          (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
+          (playerChoice == "ROCK" && computerChoice == "PAPER") ||
+          (playerChoice == "PAPER" && computerChoice == "SCISSORS")
+          ) {
+  computerWin++;
+  roundResult = "You LOST!";
+    roundResultDiv.textContent = `You LOST!`;
+  return roundResult;
+
+} else {
+  roundResult = "It's a tie!";
+    roundResultDiv.textContent = `It's a tie!`;
+  return roundResult;
+}
+};
+
 

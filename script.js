@@ -42,6 +42,7 @@ let invalidChoice = "Invalid choice!";
 function playRound(playerChoice, computerChoice) { 
 playerChoice = playerChoice.toUpperCase(); 
 computerChoice = computerPlay(); 
+
 console.log(`You played ${ playerChoice }!`); 
 console.log(`Computer played ${ computerChoice }!`);
 
