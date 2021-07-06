@@ -2,7 +2,7 @@
 
 body {
     font-size: 16px;
-    font-family: "Yomogi", cursive;
+    font-family: "Yomogi", monospace;
 }
 
 main {
@@ -61,7 +61,7 @@ heading {
 
 .choice {
     font-size: 2em;
-    width: 250px;
+    width: 200px;
     height: auto;
     flex-grow: 1;
     flex-shrink: 3;
@@ -81,7 +81,7 @@ button {
     color: black;
     border: 1px solid silver;
     border-radius: 25px;
-    font-family: "Yomogi";
+    font-family: "Yomogi", monospace;
 }
 
 #credit {
