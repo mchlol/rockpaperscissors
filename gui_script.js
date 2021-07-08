@@ -5,10 +5,23 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 
-// player choice
-/* click button needs to start game, with player choice set, not just round */
+/* 
+player makes choice => 
+  computer to make choice
+  round played with player choice and computer choice
+  choices compared
+  winner of round declared
+    number of wins by player or computer increase by one
+      if it's a tie neither wins increase
+    number of rounds increases by one
+      if number of rounds is equal to five the game is over and a winner declared
+  
+*/
 
-rockBtn.onclick = () => playRound("ROCK");
+
+// player choice
+
+rockBtn.onclick = () => playRound("ROCK"));
 paperBtn.onclick = () => playRound("PAPER");
 scissorsBtn.onclick = () => playRound("SCISSORS");
 
@@ -69,8 +82,8 @@ if (
           ) {
   playerWin++;
   roundResult = "You WON!";
-    roundResultDiv.textContent = roundResult;
-  return roundResult;
+   roundResultDiv.textContent = roundResult;
+  return roundResult; 
 
 } else if (
           (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
@@ -126,6 +139,7 @@ if (roundResult === invalidChoice) {
 // game
 
 function game() {
+    // playerChoice to be retrieved from button click - use forEach
 playRound(playerChoice, computerChoice); // play round
 // show winner of round:
 roundResultDiv.textContent = roundResult;
@@ -148,3 +162,6 @@ if (
   return game();
 }
 };
+
+
+

@@ -31,22 +31,14 @@
 
     <!-- DISPLAY ROUND CHOICES -->
     <div class="wrapper" id="round-choices">
-        <div class="round-choice" id="player-choice"></div>
-        <div class="round-choice" id="computer-choice"></div>
+        <div class="round-choice" id="player-choice">You played:</div>
+        <div class="round-choice" id="computer-choice">Computer played:</div>
     </div>
 
  
     <!-- ROUND RESULT -->
-    <div id="round-result">
-    </div>
-
-    <!-- CURRENT SCORE -->
-    <div class="wrapper" id="score-wrapper">
-        <br>
-        <div>PLAYER WINS:</div>
-        <div id="show-player-score"></div>
-        <div>COMPUTER WINS:</div>
-        <div id="show-computer-score"></div>
+    <div id="round-result" class="wrapper">
+    Round winner:
     </div>
 
     <!-- status -->
@@ -54,8 +46,18 @@
         <div id="score-status">[Play again!]</div>
     </div>
 
+    <!-- CURRENT SCORE -->
+    <div class="wrapper" id="score-wrapper">
+        SCORE:
+        <div>PLAYER WINS:</div>
+        <div id="show-player-score"></div>
+        <div>COMPUTER WINS:</div>
+        <div id="show-computer-score"></div>
+    </div>
+
 
     <br><br>
+    <!-- refresh window -->
     <button id="reset" onClick="window.location.reload();">RESET</button>
 <br>
     

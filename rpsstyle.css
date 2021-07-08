@@ -36,6 +36,7 @@ div {
     justify-content: center;
     align-items: center;
     align-content: center;
+    margin: 5px;
 }
 
 /* HEADING */
@@ -85,6 +86,7 @@ button {
 .wrapper {
     border: 1px solid black;
     padding: 15px;
+    background-color: #efefef;
 }
 
 #round-choices {
