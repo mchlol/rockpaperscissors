@@ -12,6 +12,7 @@
     <!-- HEADING -->
     <heading>
         <h1>CHOOSE YOUR FIGHTER!</h1>
+        <p>First to 5 wins!</p>
     </heading>
 
 
@@ -24,7 +25,6 @@
 
     <!-- NUMBER OF ROUNDS PLAYED -->
     <div class="wrapper">
-    First to 5 wins!<br>
         ROUNDS PLAYED: 
         <div id="round-number"></div>
     </div>
@@ -41,18 +41,18 @@
     Round winner:
     </div>
 
-    <!-- status -->
-    <div class="wrapper">
-        <div id="score-status">[Play again!]</div>
+    <!-- CURRENT SCORE -->
+    <h2>SCORE:</h2>
+    <div class="wrapper" id="score-wrapper">
+        <div class="wrapper" id="score-wrapper-inner">
+            <div id="show-player-score">PLAYER:</div>
+            <div id="show-computer-score">COMPUTER:</div>
+        </div>
     </div>
 
-    <!-- CURRENT SCORE -->
-    <div class="wrapper" id="score-wrapper">
-        SCORE:
-        <div>PLAYER WINS:</div>
-        <div id="show-player-score"></div>
-        <div>COMPUTER WINS:</div>
-        <div id="show-computer-score"></div>
+        <!-- status -->
+    <div class="wrapper">
+        <div id="score-status">[Play again!]</div>
     </div>
 
 

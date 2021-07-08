@@ -6,7 +6,8 @@ const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 
 /* 
-player makes choice => 
+choose fighter - rock paper scissors
+player makes choice 
   computer to make choice
   round played with player choice and computer choice
   choices compared
@@ -18,10 +19,25 @@ player makes choice =>
   
 */
 
+/* 
+player inputs rock paper or scissors
+input is converted to upper case
+computer will play rock paper or scissors
+check if player choice is winner or loser or tie
+if player choice == computer choice return tie
+if player == rock && computer == scissors return win
+if player == scissors && computer == rock return lose
+if player == paper && computer == rock return win
+if player == rock && computer == paper return lose
+if player == scissors && computer == paper return win
+if player == paper & computer == scissors return lose
+count number of player wins and computer wins
+*/
+
 
 // player choice
 
-rockBtn.onclick = () => playRound("ROCK"));
+rockBtn.onclick = () => playRound("ROCK");
 paperBtn.onclick = () => playRound("PAPER");
 scissorsBtn.onclick = () => playRound("SCISSORS");
 
@@ -71,7 +87,6 @@ if (
    (playerChoice !== "PAPER") &&
    (playerChoice !== "SCISSORS")
    ) {
-  alert("Invalid Choice!"); // probably don't need this in the GUI
   roundResult = invalidChoice;
   return invalidChoice;
 
