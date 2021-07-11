@@ -1,6 +1,11 @@
-// player choice buttons (uses all buttons including reset button)
+// ROCK PAPER SCISSORS - building a better user interface
+/*
+Goals: 
+  1. the divs that contain the scores etc. should not appear until the game function has been called
+  2. when the game has been won, the divs etc. should be removed so the game cannot continue
+*/
 
-//const buttons = document.querySelectorAll("button");
+// player choice buttons
 const choices = document.querySelectorAll(".choice");
 
 // divs to show player choice and computer choice
