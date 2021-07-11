@@ -9,11 +9,6 @@ main {
     text-align: center;
     width: 90%;
     margin: auto;
-    /*
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    */
 }
 
 a {
@@ -25,23 +20,14 @@ a:hover {
     color: coral;
 }
 
-div {
-    
-    /*
-    width: 80vw;
-    display: flex;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    margin: 5px;
-    */
-}
 
 /* HEADING */
 
-heading {
+header {
     text-align: center;
+    padding: 0px;
+    margin: 0px;
+    border: 1px solid black;
 }
 
 
