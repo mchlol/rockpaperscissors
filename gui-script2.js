@@ -1,6 +1,7 @@
 // player choice buttons (uses all buttons including reset button)
 
-const buttons = document.querySelectorAll("button");
+//const buttons = document.querySelectorAll("button");
+const choices = document.querySelectorAll(".choice");
 
 // divs to show player choice and computer choice
 const playerChoiceDiv = document.querySelector("#player-choice");
@@ -122,7 +123,8 @@ function playRound(playerChoice, computerChoice) {
       };
 
 
-buttons.forEach((button) => {
+
+choices.forEach((button) => {
   button.addEventListener('click', (e) => {
     playerChoice = button.id.toUpperCase();
     game();
