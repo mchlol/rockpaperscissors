@@ -85,8 +85,10 @@ heading {
 
 button {
     background-color: white;
-    color: black
+    color: black;
+    border: 1px solid silver;
     border-radius: 25px;
+    padding: 10px;
     font-family: "Yomogi", monospace;
 }
 
