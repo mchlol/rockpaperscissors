@@ -110,3 +110,7 @@ button {
 #credit {
     font-size: 0.8em;
 }
+ 
+#roundNumber {
+    display: inline-block;
+}
