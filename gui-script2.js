@@ -70,14 +70,19 @@ function playRound(playerChoice, computerChoice) {
   }
   };
 
+  function forceRefresh() {
+    window.location.reload();
+  }
+
   // check score
   function checkScore(playerWin, computerWin) {
     if ((playerWin > 5) || (computerWin > 5)) {
       statusMessageDiv.textContent = "Stop, they're already dead! Refresh to start again.";
+      forceRefresh();
       return;
     
     } else if (playerWin === 5) {
-      statusMessageDiv.textContent = `You won the game! Take that, Computer!`;
+      statusMessageDiv.textContent = `You won the game in ${roundsWon} rounds! Take that, Computer!`;
       return;
     
     } else if (computerWin === 5) {
@@ -110,16 +115,7 @@ function playRound(playerChoice, computerChoice) {
       computerScoreDiv.textContent = `COMPUTER: ${computerWin}`; // show scores
 
       let score = checkScore(playerWin, computerWin); // show if someone has won or to keep playing
-      if (
-        (playerWin === 5) ||
-        (computerWin === 5) 
-      ) {
-        scoreStatusDiv.textContent = "Game over, refresh to play again.";
-        return;
-      } else {
-        scoreStatusDiv.textContent = "Play again!";
-        return;
-      }
+
       };
 
 
