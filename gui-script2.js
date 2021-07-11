@@ -72,7 +72,7 @@ function playRound(playerChoice, computerChoice) {
   // check score
   function checkScore(playerWin, computerWin) {
     if ((playerWin > 5) || (computerWin > 5)) {
-      statusMessageDiv.textContent = "Stop, he's already dead! Refresh to start again.";
+      statusMessageDiv.textContent = "Stop, they're already dead! Refresh to start again.";
       return;
     
     } else if (playerWin === 5) {
@@ -103,10 +103,10 @@ function playRound(playerChoice, computerChoice) {
       console.log(roundResult); // show winner of round
 
       roundNumber++;
-      roundNumberDiv.textContent = roundNumber; // show number of rounds played
+      roundNumberDiv.textContent = `ROUNDS PLAYED: ${roundNumber}`; // show number of rounds played
 
-      playerScoreDiv.textContent = playerWin;
-      computerScoreDiv.textContent = computerWin; // show scores
+      playerScoreDiv.textContent = `PLAYER: ${playerWin}`;
+      computerScoreDiv.textContent = `COMPUTER: ${computerWin}`; // show scores
 
       let score = checkScore(playerWin, computerWin); // show if someone has won or to keep playing
       if (

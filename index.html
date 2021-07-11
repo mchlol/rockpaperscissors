@@ -3,7 +3,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="rpsstyle.css">
-        <script src="https://kit.fontawesome.com/1aa887c412.js" crossorigin="anonymous"></script>
 
         <title>Rock! Paper! Scissors!</title>
     </head>
@@ -27,34 +26,31 @@
 
     <!-- NUMBER OF ROUNDS PLAYED -->
     <div class="wrapper">
-        ROUNDS PLAYED: 
-        <div id="round-number"></div>
+        <div id="round-number">[number of rounds]</div>
     </div>
 
     <!-- DISPLAY ROUND CHOICES -->
     <div class="wrapper" id="round-choices">
-        <div class="round-choice" id="player-choice">You played:</div>
-        <div class="round-choice" id="computer-choice">Computer played:</div>
+        <div class="round-choice" id="player-choice">[player choice]</div>
+        <div class="round-choice" id="computer-choice">[computer choice]</div>
     </div>
 
  
     <!-- ROUND RESULT -->
-    <div id="round-result" class="wrapper">
-    Round winner:
-    </div>
+    <div id="round-result" class="wrapper">[winner of round]</div>
 
     <!-- CURRENT SCORE -->
-    <h2>SCORE:</h2>
-    <div class="wrapper" id="score-wrapper">
+    <div class="wrapper" id="score-wrapper"> 
+        <h2>SCORE:</h2>
         <div class="wrapper" id="score-wrapper-inner">
-            <div id="show-player-score">PLAYER:</div>
-            <div id="show-computer-score">COMPUTER:</div>
+            <div id="show-player-score">[player score]</div>
+            <div id="show-computer-score">[computer score]</div>
         </div>
     </div>
 
         <!-- status -->
     <div class="wrapper">
-        <div id="status-message"></div>
+        <div id="status-message">[status message]</div>
     </div>
 
 
@@ -64,12 +60,12 @@
 <br>
     
     <div id="credit">
-    Made by <a href="https://github.com/mchlol">mchlol <i class="fas fa-cloud-rain"></i></a> 
+    Made by <a href="https://github.com/mchlol" target="_blank">mchlol <i class="fas fa-cloud-rain"></i></a> 
     </div>
     </main>
     
     <script src="gui-script2.js"></script>
-
+    <script src="https://kit.fontawesome.com/1aa887c412.js" crossorigin="anonymous"></script>
 
 <!-- 
     structure: 
