@@ -1,6 +1,6 @@
-// player choice buttons (uses all buttons including reset button)
+// ROCK PAPER SCISSORS - with basic clunky user interface
 
-//const buttons = document.querySelectorAll("button");
+// player choice buttons 
 const choices = document.querySelectorAll(".choice");
 
 // divs to show player choice and computer choice

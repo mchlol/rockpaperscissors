@@ -1,45 +1,39 @@
+// ROCK PAPER SCISSORS - building a better user interface
+/*
+Goals: 
+  1. the divs that contain the scores etc. should not appear until the game function has been called
+  2. when the game has been won, the choices should be hidden so the only option is to refresh
+*/
 
-// choices
-
-const rockBtn = document.querySelector("#rock");
-const paperBtn = document.querySelector("#paper");
-const scissorsBtn = document.querySelector("#scissors");
-
-/* 
-choose fighter - rock paper scissors
-player makes choice by pressing button
-  computer to make choice
-  round played with player choice and computer choice
-  choices compared
-  winner of round declared
-    number of wins by player or computer increase by one
-      if it's a tie neither wins increase
-    number of rounds increases by one
-      if number of rounds is equal to five the game is over and a winner declared
-  
+/*  
+player presses a choice button
+div is created to hold player choice
+div is created to hold computer choice
+div is created to display round result
+ - create a function to display all these things?
+ make sure divs do not stack
 */
 
 
+// player choice buttons
+const choices = document.querySelectorAll(".choice");
 
-// player choice
+// divs to show player choice and computer choice
+const roundChoicesDiv = document.querySelector("#round-choices");
 
-rockBtn.onclick = () => playRound("ROCK");
-paperBtn.onclick = () => playRound("PAPER");
-scissorsBtn.onclick = () => playRound("SCISSORS");
-
-// set div variables
-
-const playerChoiceDiv = document.querySelector("#player-choice");
-const computerChoiceDiv = document.querySelector("#computer-choice");
+// divs to show winner and number of rounds played
 const roundResultDiv = document.querySelector("#round-result");
+
+//const roundResultDiv = document.querySelector("#round-result");
+
 const roundNumberDiv = document.querySelector("#round-number");
 
-const playerScore = document.querySelector("show-player-score");
-const ComputerScore = document.querySelector("#show-player-score");
-const scoreStatus = document.querySelector("#score-status");
+// divs to show scores & status message
+const playerScoreDiv = document.querySelector("#show-player-score");
+const computerScoreDiv = document.querySelector("#show-computer-score");
+const statusMessageDiv = document.querySelector("#status-message");
 
 // set computer choice
-
 function computerPlay() {
   let computerTurnOptions = ["ROCK", "PAPER", "SCISSORS"]; 
   function getRandom(min, max) {
@@ -49,120 +43,148 @@ function computerPlay() {
   return computerTurnOptions[randomNumber]; 
 };
 
-// script variables
 
+// game function variables
 let playerWin = 0; 
 let computerWin = 0;
 let playerChoice;
 let computerChoice;
 let roundResult;
-let scoreAlert;
+let statusMessage;
 let roundNumber = 0;
-let invalidChoice = "Invalid choice!";
 
 
-// plays round 
+
+// play round
 
 function playRound(playerChoice, computerChoice) { 
-computerChoice = computerPlay(); 
-playerChoiceDiv.textContent = `You played ${ playerChoice }!`;
-computerChoiceDiv.textContent = `Computer played ${ computerChoice }!`
 
-if (
-   (playerChoice !== "ROCK") &&
-   (playerChoice !== "PAPER") &&
-   (playerChoice !== "SCISSORS")
-   ) {
-  roundResult = invalidChoice;
-  return invalidChoice;
+  // create the div to hold the choices, should replace the choice before it so they dont accumulate
 
-} else if (
-          (playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
-          (playerChoice == "PAPER" && computerChoice == "ROCK") ||
-          (playerChoice == "SCISSORS" && computerChoice == "PAPER")
-          ) {
-  playerWin++;
-  roundResult = "You WON!";
-   roundResultDiv.textContent = roundResult;
-  return roundResult; 
+  const playerChoiceDiv = document.createElement("div");
+  playerChoiceDiv.classList.add("round-choices");
+  playerChoiceDiv.setAttribute("id", "player-choice");
 
-} else if (
-          (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
-          (playerChoice == "ROCK" && computerChoice == "PAPER") ||
-          (playerChoice == "PAPER" && computerChoice == "SCISSORS")
-          ) {
-  computerWin++;
-  roundResult = "You LOST!";
-    roundResultDiv.textContent = roundResult;
-  return roundResult;
+  roundChoicesDiv.textContent = `You played ${ playerChoice }!`;
+  //roundChoicesDiv.appendChild(playerChoiceDiv);
+  
+  computerChoice = computerPlay(); 
+  
+  const computerChoiceDiv = document.createElement("div");
+  computerChoiceDiv.classList.add("round-choices");
+  computerChoiceDiv.setAttribute("id", "computer-choice");
+  computerChoiceDiv.textContent = `Computer played ${ computerChoice }!`;
+  roundChoicesDiv.appendChild(computerChoiceDiv);
 
-} else {
-  roundResult = "It's a tie!";
-    roundResultDiv.textContent = roundResult;
-  return roundResult;
+  if (
+      (playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
+      (playerChoice == "PAPER" && computerChoice == "ROCK") ||
+      (playerChoice == "SCISSORS" && computerChoice == "PAPER")
+      ) {
+    playerWin++;
+    roundResult = "You WON!";
+    return roundResult;
+  
+  } else if (
+            (playerChoice == "SCISSORS" && computerChoice == "ROCK") ||
+            (playerChoice == "ROCK" && computerChoice == "PAPER") ||
+            (playerChoice == "PAPER" && computerChoice == "SCISSORS")
+            ) {
+    computerWin++;
+    roundResult = "You LOST!";
+    return roundResult;
+  
+  } else {
+    roundResult = "It's a tie!";
+    return roundResult;
+  }
+
+  };
+
+
+
+    // play game of 5 rounds 
+    
+    function game() {
+      
+      playRound(playerChoice, computerChoice); // play round
+
+
+      roundResultDiv.textContent = roundResult;
+      roundChoicesDiv.appendChild(roundResultDiv);
+
+
+      roundNumber++;
+      roundNumberDiv.textContent = `ROUNDS PLAYED: ${roundNumber}`; // show number of rounds played
+
+      playerScoreDiv.textContent = `PLAYER: ${playerWin}`;
+      computerScoreDiv.textContent = `COMPUTER: ${computerWin}`; // show scores
+
+      let score = checkScore(playerWin, computerWin); // show if someone has won or to keep playing
+
+      };
+
+
+
+choices.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    playerChoice = button.id.toUpperCase();
+    game();
+  })
+});
+
+
+/* 
+player makes choice by clicking button
+playerChoice is assigned the id of the button pressed
+computerPlay is called to assign a value to computerChoice
+playRound is called with playerChoice and computerChoice
+the choices are compared
+the round result (win/lose) is displayed
+the number of player/computer wins increases
+  if tie no wins increase
+the number of rounds increases
+  if number of round >= 5 winner is declared & game ends
+  if number of round < 5 player is prompted to select again
+when player selects again the text is replaced with new text
+*/
+
+// force window to reload
+
+function forceRefresh() {
+  window.location.reload();
 }
-};
-
-// check score
-
-function checkScore(playerWin, computerWin) {
-if (roundResult === invalidChoice) {
-  scoreAlert = "Invalid choice, try again";
-  scoreStatus.textContent = scoreAlert;
-  return scoreAlert;
-
-} else if ((playerWin > 5) || (computerWin > 5)) {
-  let refreshAlert = `Stop, he's already dead! Refresh to play again.`;
-  scoreStatus.textContent = scoreAlert;
-  return refreshAlert;
-
-} else if (playerWin === 5) {
-  scoreAlert = `You won the game! Take that, Computer!`;
-  scoreStatus.textContent = scoreAlert;
-  return scoreAlert;
-
-} else if (computerWin === 5) {
-  scoreAlart =  `Computer won the game! The machines are taking over!`;
-  scoreStatus.textContent = scoreAlert;
-  return scoreAlert;
-
-} else if ((playerWin < 5) || (computerWin < 5)) {
-  scoreAlert = "Keep playing, first to 5 wins!";
-  return scoreAlert;
-  scoreStatus.textContent = scoreAlert;
-} else {
-  scoreAlert = "Game over! Refresh to play again.";
-  scoreStatus.textContent = scoreAlert;
-  return scoreAlert;
-}
-};
-
-// game
-
-function game() {
-    // playerChoice to be retrieved from button click - use forEach
-playRound(playerChoice, computerChoice); // play round
-// show winner of round:
-roundResultDiv.textContent = roundResult;
-console.log(roundResult); 
-
-// show current score:
 
 
-console.log(` No. of player wins: ${ playerWin }\n No. of computer wins: ${ computerWin }`); // show current score in console
-let score = checkScore(playerWin, computerWin); // show status if games remaining or alert if someone has won
-if (
-  (playerWin === 5) ||
-  (computerWin === 5) 
-) {
-  console.log("Game Over, refresh to play again.");
-  return alert("Game over! Refresh the page to start again.");
-} else {
-    roundNumber++;
-    roundNumberDiv.textContent = `ROUND ${roundNumber}`;
-  return game();
-}
-};
-
-
-
+  // check score
+  function checkScore(playerWin, computerWin) {
+    if ((playerWin > 5) || (computerWin > 5)) {
+      statusMessageDiv.textContent = "Stop, they're already dead! Refresh to play again.";
+      const choicesWrapper = document.querySelector("#choices-wrapper");
+      choicesWrapper.textContent = "";
+      return;
+    
+    } else if (playerWin === 5) {
+      statusMessageDiv.style.color = "red";
+      statusMessageDiv.textContent = `You won the game in ${roundNumber} rounds! Take that, Computer! Refresh to play again.`;
+      const choicesWrapper = document.querySelector("#choices-wrapper");
+      choicesWrapper.textContent = "";
+      return;
+    
+    } else if (computerWin === 5) {
+      statusMessageDiv.textContent =  `Computer won the game in ${roundNumber} rounds! The machines are taking over! Refresh to play again.`;
+      statusMessageDiv.style.color = "red";
+      const choicesWrapper = document.querySelector("#choices-wrapper");
+      choicesWrapper.textContent = "";
+      return;
+    
+    } else if ((playerWin < 5) || (computerWin < 5)) {
+      statusMessageDiv.textContent = `Keep playing, first to 5 wins!`;
+      return;
+    } else {
+      statusMessageDiv.textContent = "Game over! Refresh to play again.";
+      const choicesWrapper = document.querySelector("#choices-wrapper");
+      choicesWrapper.textContent = "";
+      return;
+    }
+    };
