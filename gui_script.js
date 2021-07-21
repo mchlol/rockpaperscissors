@@ -2,18 +2,30 @@
 /*
 Goals: 
   1. the divs that contain the scores etc. should not appear until the game function has been called
-  2. when the game has been won, the divs etc. should be removed so the game cannot continue
+  2. when the game has been won, the choices should be hidden so the only option is to refresh
 */
+
+/*  
+player presses a choice button
+div is created to hold player choice
+div is created to hold computer choice
+div is created to display round result
+ - create a function to display all these things?
+ make sure divs do not stack
+*/
+
 
 // player choice buttons
 const choices = document.querySelectorAll(".choice");
 
 // divs to show player choice and computer choice
-const playerChoiceDiv = document.querySelector("#player-choice");
-const computerChoiceDiv = document.querySelector("#computer-choice");
+const roundChoicesDiv = document.querySelector("#round-choices");
 
 // divs to show winner and number of rounds played
 const roundResultDiv = document.querySelector("#round-result");
+
+//const roundResultDiv = document.querySelector("#round-result");
+
 const roundNumberDiv = document.querySelector("#round-number");
 
 // divs to show scores & status message
@@ -42,15 +54,28 @@ let statusMessage;
 let roundNumber = 0;
 
 
+
 // play round
 
 function playRound(playerChoice, computerChoice) { 
 
+  // create the div to hold the choices, should replace the choice before it so they dont accumulate
+
+  const playerChoiceDiv = document.createElement("div");
+  playerChoiceDiv.classList.add("round-choices");
+  playerChoiceDiv.setAttribute("id", "player-choice");
+
+  roundChoicesDiv.textContent = `You played ${ playerChoice }!`;
+  //roundChoicesDiv.appendChild(playerChoiceDiv);
+  
   computerChoice = computerPlay(); 
   
-  playerChoiceDiv.textContent = `You played ${ playerChoice }!`;
+  const computerChoiceDiv = document.createElement("div");
+  computerChoiceDiv.classList.add("round-choices");
+  computerChoiceDiv.setAttribute("id", "computer-choice");
   computerChoiceDiv.textContent = `Computer played ${ computerChoice }!`;
-  
+  roundChoicesDiv.appendChild(computerChoiceDiv);
+
   if (
       (playerChoice == "ROCK" && computerChoice == "SCISSORS") ||
       (playerChoice == "PAPER" && computerChoice == "ROCK") ||
@@ -73,21 +98,21 @@ function playRound(playerChoice, computerChoice) {
     roundResult = "It's a tie!";
     return roundResult;
   }
+
   };
 
-  function forceRefresh() {
-    window.location.reload();
-  }
 
 
     // play game of 5 rounds 
     
     function game() {
-
+      
       playRound(playerChoice, computerChoice); // play round
 
+
       roundResultDiv.textContent = roundResult;
-      console.log(roundResult); // show winner of round
+      roundChoicesDiv.appendChild(roundResultDiv);
+
 
       roundNumber++;
       roundNumberDiv.textContent = `ROUNDS PLAYED: ${roundNumber}`; // show number of rounds played
@@ -121,21 +146,36 @@ the number of player/computer wins increases
 the number of rounds increases
   if number of round >= 5 winner is declared & game ends
   if number of round < 5 player is prompted to select again
+when player selects again the text is replaced with new text
 */
+
+// force window to reload
+
+function forceRefresh() {
+  window.location.reload();
+}
+
 
   // check score
   function checkScore(playerWin, computerWin) {
     if ((playerWin > 5) || (computerWin > 5)) {
       statusMessageDiv.textContent = "Stop, they're already dead! Refresh to play again.";
-      forceRefresh();
+      const choicesWrapper = document.querySelector("#choices-wrapper");
+      choicesWrapper.textContent = "";
       return;
     
     } else if (playerWin === 5) {
+      statusMessageDiv.style.color = "red";
       statusMessageDiv.textContent = `You won the game in ${roundNumber} rounds! Take that, Computer! Refresh to play again.`;
+      const choicesWrapper = document.querySelector("#choices-wrapper");
+      choicesWrapper.textContent = "";
       return;
     
     } else if (computerWin === 5) {
       statusMessageDiv.textContent =  `Computer won the game in ${roundNumber} rounds! The machines are taking over! Refresh to play again.`;
+      statusMessageDiv.style.color = "red";
+      const choicesWrapper = document.querySelector("#choices-wrapper");
+      choicesWrapper.textContent = "";
       return;
     
     } else if ((playerWin < 5) || (computerWin < 5)) {
@@ -143,6 +183,8 @@ the number of rounds increases
       return;
     } else {
       statusMessageDiv.textContent = "Game over! Refresh to play again.";
+      const choicesWrapper = document.querySelector("#choices-wrapper");
+      choicesWrapper.textContent = "";
       return;
     }
     };
